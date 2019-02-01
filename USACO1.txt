@@ -1,0 +1,49 @@
+'''
+ID: id
+LANG: PYTHON3
+PROG: ride
+'''
+
+
+fin = open ('ride.in', 'r')
+fout = open ('ride.out', 'w')
+
+words = []
+for line in fin:
+    line = line.rstrip('\n') #remove endline chars
+    words.append(line)
+input1, input2 = words
+
+abet = 'abcdefghijklmnopqrstuvwxyz'
+cap_abet = abet.upper()
+
+abet_dict = {}
+counter = 1
+for letter in cap_abet:
+    abet_dict[letter]=counter
+    counter+=1
+#print(abet_dict)
+num_vals1 = [] #convert the first word into corresponding product of numbers
+num_vals2 = []
+for letter in input1:
+    num_vals1.append(abet_dict[letter])
+for letter in input2:
+    num_vals2.append(abet_dict[letter])
+temp1=1
+for num in num_vals1:
+    temp1 = temp1*num
+temp2=1
+for num in num_vals2:
+    temp2 = temp2*num
+print(temp2)
+
+if temp1%47 == temp2%47:
+    #return 'GO'
+    fout.write ('GO\n')
+    
+    
+else:
+    #return 'STAY'
+    fout.write ('STAY\n')
+fout.close()
+    
